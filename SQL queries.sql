@@ -1,10 +1,10 @@
 -- Identifying missing data (2014)
 select 
-	count(*) as total_rows,
-	count( case when state is null then 1 end) as missing_state,
+    count(*) as total_rows,
+    count( case when state is null then 1 end) as missing_state,
     count( case when pc_name is null then 1 end) as missing_pc_name,
     count( case when candidate is null then 1 end) as missing_candidate,
-	count( case when sex is null then 1 end) as missing_sex,
+    count( case when sex is null then 1 end) as missing_sex,
     count( case when age is null then 1 end) as missing_age,
     count( case when category is null then 1 end) as missing_category,
     count( case when party is null then 1 end) as missing_party,
@@ -17,11 +17,11 @@ from constituency_wise_results_2014;
     
 -- Identifying missing data (2019)
 select 
-	count(*) as total_rows,
-	count( case when state is null then 1 end) as missing_state,
+    count(*) as total_rows,
+    count( case when state is null then 1 end) as missing_state,
     count( case when pc_name is null then 1 end) as missing_pc_name,
     count( case when candidate is null then 1 end) as missing_candidate,
-	count( case when sex is null then 1 end) as missing_sex,
+    count( case when sex is null then 1 end) as missing_sex,
     count( case when age is null then 1 end) as missing_age,
     count( case when category is null then 1 end) as missing_category,
     count( case when party is null then 1 end) as missing_party,
