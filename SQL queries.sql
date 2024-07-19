@@ -390,3 +390,29 @@ on c1.state = c2.state and c1.pc_name = c2.pc_name
 where round(total_votes_2019/sum_votes_2019 * 100,2) between 1 and 10
 order by percent_share_2019 ;
 
+-- Secondary Analysis
+-- postal_votes % and voter turnout %
+select pc_name, round(((sum(total_votes)/total_electors)*100),2) as voter_turnout_ratio, round(((postal_votes/sum(postal_votes))*100),2) as postal_vote_percent
+from constituency_wise_results_2014
+group by pc_name, state;
+
+
+select pc_name, round(((sum(total_votes)/total_electors)*100),2) as voter_turnout_ratio, round(((postal_votes/sum(postal_votes))*100),2) as postal_vote_percent
+from constituency_wise_results_2019
+group by pc_name, state;
+
+
+-- state_voter_turnout_percent
+select state, round(sum(sum_votes)/sum(total_electors)*100,2) as state_voter_turnout_ratio
+from(
+select state, pc_name, sum(total_votes) as sum_votes, total_electors 
+from constituency_wise_results_2014
+group by pc_name,state)x
+group by state;
+
+select state, round(sum(sum_votes)/sum(total_electors)*100,2) as state_voter_turnout_ratio
+from(
+select state, pc_name, sum(total_votes) as sum_votes, total_electors 
+from constituency_wise_results_2019
+group by pc_name,state)x
+group by state;
