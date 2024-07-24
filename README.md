@@ -138,10 +138,18 @@ INC
 
 **Q11)** Which constituencies have elected candidates whose party has less than 10% vote share at state level in 2019
 
-![image](https://github.com/user-attachments/assets/9c71d0ec-5aaa-4a93-8a85-afaf64dc0b6d)
+![image](https://github.com/user-attachments/assets/6b5226d3-1c1d-4f49-9da8-6b9c02095eae)
 
 
 Python file:
 This file contains the codes used to perform correlational analysis for the mentioned 4 questions in the problem statement pdf. 
 The data for GDP and Literacy rate % were sourced from wikipedia into respective excel files.
+
+Recommendations to improve voter turnout ratio:
+
+* Enhanced Postal Voting Process
+
+* Improved Polling Station Facilities
+
+* Diversified Validation Options
 
