@@ -369,12 +369,14 @@ limit 1;
 
 
 -- Q11
+-- get the winner candidate for each pc_name
 with cte as
 (select * from 
 (select state, pc_name, candidate, party, total_votes ,row_number() over(partition by pc_name order by total_votes desc) as ranks
 from constituency_wise_results_2019) derived
 where ranks = 1),
 
+-- calculations for vote_share at state level
  cte_2019 as
 (select *, sum(total_votes_2019) over(partition by state) as sum_votes_2019
 from
@@ -383,12 +385,12 @@ from constituency_wise_results_2019
 group by party,state)x
  )
 
-select c2.state, c2.pc_name, c1.candidate, c1.party, round(total_votes_2019/sum_votes_2019 * 100,2)  as percent_share_2019
+select distinct c2.state, c2.pc_name, c1.candidate, c1.party
 from cte c1
 join cte_2019 c2
 on c1.state = c2.state and c1.pc_name = c2.pc_name
-where round(total_votes_2019/sum_votes_2019 * 100,2) between 1 and 10
-order by percent_share_2019 ;
+where round(total_votes_2019/sum_votes_2019 * 100,2) between 1 and 10;
+
 
 -- Secondary Analysis
 -- postal_votes % and voter turnout %
